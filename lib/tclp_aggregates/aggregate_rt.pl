@@ -21,15 +21,15 @@ minimax_tabling_stats :- tabling_stats.
 :- multifile attribute_goals/3.
 
 attr_portray_hook(Att, Var) :-
-	display(Var), display(', '), display(Att).
+    display(Var), display(', '), display(Att).
 
 attr_unify_hook(_Att, _X) :-
-	print(unify_hook),nl,
-	true.
+    print(unify_hook),nl,
+    true.
 
 attribute_goals(X, [S|T], T) :-
-	get_attr_local(X, Att),
-	S = (abs(X, Att)).
+    get_attr_local(X, Att),
+    S = (abs(X, Att)).
 
 put(Var,Att) :- put_attr_local(Var, Att).
 get(Var,Att) :- get_attr_local(Var, Att).
@@ -41,36 +41,36 @@ del(Var) :- detach_attribute(Var).
 %%%%%%% TCLP Interface %%%%%%%%%%%%%%%%%%%%
 call_domain_projection([], []).
 call_domain_projection([V|Vars], [A|Atts]) :-
-	store_projection_(V,A),
-	call_domain_projection(Vars, Atts).
+    store_projection_(V,A),
+    call_domain_projection(Vars, Atts).
 answer_domain_projection([], []).
 answer_domain_projection([V|Vars], [A|Atts]) :-
-	store_projection_(V,A),
-	answer_domain_projection(Vars,Atts).
+    store_projection_(V,A),
+    answer_domain_projection(Vars,Atts).
 call_store_projection(_, St, St).
 answer_store_projection(_, St, St).
 
 call_entail([], []).
 call_entail([A1|Atts1], [A2|Atts2]) :-
-	call_entail_(A1,A2),
-	call_entail(Atts1, Atts2), !.
+    call_entail_(A1,A2),
+    call_entail(Atts1, Atts2), !.
 
 answer_check_entail([],[],agg([])) :- !.
 answer_check_entail([],[],_) :- !.
 answer_check_entail([A1|Atts1], [A2|Atts2] , 1) :-
-	answer_compare_(A1,A2,1),
-	answer_check_entail(Atts1, Atts2, 1).
+    answer_compare_(A1,A2,1),
+    answer_check_entail(Atts1, Atts2, 1).
 answer_check_entail([A1|Atts1], [A2|Atts2] , -1) :-
-	answer_compare_(A1,A2,-1),
-	answer_check_entail(Atts1, Atts2, -1).
+    answer_compare_(A1,A2,-1),
+    answer_check_entail(Atts1, Atts2, -1).
 answer_check_entail([A1|Atts1], [A2|Atts2], agg([New|AttsAgg])) :-
-	answer_compare_(A1,A2,agg(New)),
-	answer_check_entail(Atts1, Atts2, agg(AttsAgg)).
+    answer_compare_(A1,A2,agg(New)),
+    answer_check_entail(Atts1, Atts2, agg(AttsAgg)).
 
 apply_answer([], []).
 apply_answer([V|Vars], [A|Atts]) :-
-	apply_answer_(V,A),
-	apply_answer(Vars,Atts).
+    apply_answer_(V,A),
+    apply_answer(Vars,Atts).
 
 
 %%%%%%% TCLP Interface %%%%%%%%%%%%%%%%%%%%
