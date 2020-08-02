@@ -1,7 +1,7 @@
 // difference_constraints_tab.c
 
 #include <ciao/ciao_prolog.h>
-#include <ciao/attr.h>
+#include <ciao/attributes.h>
 #include <ciao/termdefs.h>
 #include "ciao/support_macros.h"
 

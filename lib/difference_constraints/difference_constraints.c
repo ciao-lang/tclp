@@ -15,7 +15,7 @@
 #include <ciao/task_areas.h>
 #include <ciao/stacks.h>
 #include <ciao/wam.h>
-#include <ciao/attr.h>
+#include <ciao/attributes.h>
 
 // #include <ciao/tabling.h>
 
