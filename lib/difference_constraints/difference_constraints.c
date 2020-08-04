@@ -7,10 +7,7 @@
 
 #include <ciao_prolog.h>
 
-#include <ciao/support.h>
-#include <ciao/termdefs.h>
 #include <ciao/datadefs.h>
-#include <ciao/access.h>
 #include <ciao/tasks.h>
 #include <ciao/task_areas.h>
 #include <ciao/stacks.h>
