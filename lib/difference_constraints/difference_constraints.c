@@ -9,7 +9,6 @@
 
 #include <ciao/datadefs.h>
 #include <ciao/tasks.h>
-#include <ciao/task_areas.h>
 #include <ciao/stacks.h>
 #include <ciao/wam.h>
 #include <ciao/attributes.h>

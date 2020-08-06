@@ -3,7 +3,6 @@
 #include <ciao/ciao_prolog.h>
 #include <ciao/datadefs.h>
 #include <ciao/attributes.h>
-#include <ciao/termdefs.h>
 
 #include "engine.h"
 #include "terms.h"
