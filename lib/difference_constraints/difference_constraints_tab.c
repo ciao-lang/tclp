@@ -1,7 +1,7 @@
 // difference_constraints_tab.c
 
 #include <ciao/ciao_prolog.h>
-#include <ciao/datadefs.h>
+#include <ciao/eng.h>
 #include <ciao/attributes.h>
 
 #include "engine.h"
