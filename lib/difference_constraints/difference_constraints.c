@@ -8,7 +8,7 @@
 #include <ciao_prolog.h>
 
 #include <ciao/eng.h>
-#include <ciao/tasks.h>
+#include <ciao/internals.h>
 #include <ciao/eng_gc.h>
 #include <ciao/wam.h>
 #include <ciao/attributes.h>
