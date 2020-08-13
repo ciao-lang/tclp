@@ -10,7 +10,7 @@
 #include <ciao/eng.h>
 #include <ciao/internals.h>
 #include <ciao/eng_gc.h>
-#include <ciao/wam.h>
+#include <ciao/basiccontrol.h>
 #include <ciao/attributes.h>
 
 // #include <ciao/tabling.h>
