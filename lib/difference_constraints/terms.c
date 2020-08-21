@@ -8,21 +8,23 @@ tagged_t sep_make_var(goal_descriptor_t *state)
 
 tagged_t sep_make_integer(goal_descriptor_t *state, intmach_t i) 
 {
+  worker_t *w = REGISTERS;
   ciao_ensure_heap(state, 4);  //change to in my_heap
-  return MakeInteger(REGISTERS, i);
+  return IntmachToTagged(i);
 }
 
 tagged_t sep_make_float(goal_descriptor_t *state, double f) 
 {
+  worker_t *w = REGISTERS;
   ciao_ensure_heap(state, 4);
-  return MakeFloat(REGISTERS, f);
+  return BoxFloat(f);
 }
 
 tagged_t sep_make_list(goal_descriptor_t *state, tagged_t head, tagged_t tail) 
 {
   tagged_t list;
   ciao_ensure_heap(state, 3);
-  worker_t * w = REGISTERS;
+  worker_t *w = REGISTERS;
   MakeLST(list, head, tail);
   return list;
 }
