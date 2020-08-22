@@ -86,7 +86,7 @@ CBOOL__PROTO(put_dc_value_c)
   DEREF(X(0),X(0));
   DEREF(X(1),X(1));
   DEREF(X(2),X(2));
-  space->edges[GetInteger(X(0))][GetInteger(X(1))] = GetInteger(X(2));
+  space->edges[TaggedToIntmach(X(0))][TaggedToIntmach(X(1))] = TaggedToIntmach(X(2));
 #if defined(DEBUG_ALL)
   printf("\nPOST SPACE\n");
   difference_constraints_print_c(w);
@@ -173,7 +173,7 @@ CBOOL__PROTO(difference_constraints_print_variable_c)
 #endif
   DEREF(X(0),X(0));
   
-  intmach_t id = GetInteger(X(0));
+  intmach_t id = TaggedToIntmach(X(0));
 
   print_variable_space(space,id);
 
@@ -207,8 +207,8 @@ CBOOL__PROTO(difference_constraints_print_variable_c)
 //#endif
 //  DEREF(X(0),X(0));
 //  DEREF(X(1),X(1));
-//  struct space *prev_space = (struct space*)GetInteger(X(0));
-//  last_cp = (node_t*)GetInteger(X(1));
+//  struct space *prev_space = (struct space*)TaggedToIntmach(X(0));
+//  last_cp = (node_t*)TaggedToIntmach(X(1));
 //
 ////  if (prev_space != space) delete_space(space);
 //
@@ -245,9 +245,9 @@ CBOOL__PROTO(difference_constraints_LB_c)
 #endif
 
   DEREF(X(0),X(0));
-  intmach_t id = GetInteger(X(0));
+  intmach_t id = TaggedToIntmach(X(0));
   DEREF(X(1),X(1));
-  intmach_t lb = GetInteger(X(1));
+  intmach_t lb = TaggedToIntmach(X(1));
 
   intmach_t res = add_diff_const_space(w,space,0,id,lb*(-1));
 #ifdef DEBUG_ALL
@@ -268,8 +268,8 @@ CBOOL__PROTO(difference_constraints_UB_c)
 
   DEREF(X(0),X(0));
   DEREF(X(1),X(1));
-  intmach_t id = GetInteger(X(0));
-  intmach_t ub = GetInteger(X(1));
+  intmach_t id = TaggedToIntmach(X(0));
+  intmach_t ub = TaggedToIntmach(X(1));
 
   intmach_t resul = add_diff_const_space(w,space,id,0,ub);
 #ifdef DEBUG_ALL
@@ -292,9 +292,9 @@ CBOOL__PROTO(difference_constraints_const_c)
   DEREF(X(1),X(1));
   DEREF(X(2),X(2));
 
-  intmach_t id1 = GetInteger(X(0));
-  intmach_t id2 = GetInteger(X(1));
-  intmach_t d = GetInteger(X(2));
+  intmach_t id1 = TaggedToIntmach(X(0));
+  intmach_t id2 = TaggedToIntmach(X(1));
+  intmach_t d = TaggedToIntmach(X(2));
 
   intmach_t resul = add_diff_const_space(w,space,id1,id2,d);
 
@@ -315,8 +315,8 @@ CBOOL__PROTO(difference_constraints_get_value_c)
   DEREF(X(0),X(0));
   DEREF(X(1),X(1));
 
-  intmach_t id1 = GetInteger(X(0));
-  intmach_t id2 = GetInteger(X(1));
+  intmach_t id1 = TaggedToIntmach(X(0));
+  intmach_t id2 = TaggedToIntmach(X(1));
 
   if (space->edges[id1][id2] != MAX)
     return Unify(X(2),MkIntTerm(space->edges[id1][id2]));
@@ -358,8 +358,8 @@ CBOOL__PROTO(difference_constraints_full_abstraction_c)
     {
       for (l2 = TailOfTerm(l1); l2 != EMPTY_LIST; l2 = TailOfTerm(l2))
         {
-          intmach_t id1 = GetInteger(HeadOfTerm(l1));
-          intmach_t id2 = GetInteger(HeadOfTerm(l2));
+          intmach_t id1 = TaggedToIntmach(HeadOfTerm(l1));
+          intmach_t id2 = TaggedToIntmach(HeadOfTerm(l2));
           full_abstraction_space(w,space,id1,id2);
         }
     }
@@ -379,8 +379,8 @@ CBOOL__PROTO(difference_constraints_normalize_c)
   DEREF(X(0),X(0));
   DEREF(X(1),X(1));
   DEREF(X(2),X(2));
-  intmach_t max_lb = GetInteger(X(1));
-  intmach_t max_ub = GetInteger(X(2));
+  intmach_t max_lb = TaggedToIntmach(X(1));
+  intmach_t max_ub = TaggedToIntmach(X(2));
 
   tagged_t l1, l2;
 
@@ -388,8 +388,8 @@ CBOOL__PROTO(difference_constraints_normalize_c)
     {
       for (l2 = TailOfTerm(l1); l2 != EMPTY_LIST; l2 = TailOfTerm(l2))
         {
-          intmach_t id1 = GetInteger(HeadOfTerm(l1));
-          intmach_t id2 = GetInteger(HeadOfTerm(l2));
+          intmach_t id1 = TaggedToIntmach(HeadOfTerm(l1));
+          intmach_t id2 = TaggedToIntmach(HeadOfTerm(l2));
           normalize_space(w,space,id1,id2,max_lb,max_ub);
         }
     }
@@ -411,7 +411,7 @@ CBOOL__PROTO(difference_constraints_delay_c)
 
   for (list = X(0); list != EMPTY_LIST; list = TailOfTerm(list))
     {
-      intmach_t id = GetInteger(HeadOfTerm(list));
+      intmach_t id = TaggedToIntmach(HeadOfTerm(list));
       delay_space(w,space,id);
     }
 
@@ -430,13 +430,13 @@ CBOOL__PROTO(difference_constraints_reset_c)
   DEREF(X(0),X(0));
   DEREF(X(1),X(1));
   DEREF(X(2),X(2));
-  intmach_t id1 = GetInteger(X(0));
-  intmach_t id2 = GetInteger(X(1));
+  intmach_t id1 = TaggedToIntmach(X(0));
+  intmach_t id2 = TaggedToIntmach(X(1));
 
   tagged_t list;
   for (list = X(2); list != EMPTY_LIST; list = TailOfTerm(list))
     {
-      intmach_t v = GetInteger(HeadOfTerm(list));
+      intmach_t v = TaggedToIntmach(HeadOfTerm(list));
       reset_space(w,space,id1,id2,v);
     }
 
