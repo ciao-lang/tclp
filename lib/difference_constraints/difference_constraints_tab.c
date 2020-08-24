@@ -373,7 +373,7 @@ CBOOL__PROTO(apply_answer_c)
     {
       DerefCar(car,list);
       DerefCdr(list,list);
-      if (!TagIsCVA(car))
+      if (!TaggedIsCVA(car))
         {
 #if defined(DEBUG_ALL)
           printf("\nCreating aux CVA %x\n",car);
