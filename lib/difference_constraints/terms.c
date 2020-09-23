@@ -1,7 +1,7 @@
 tagged_t sep_make_var(goal_descriptor_t *state)
 {
   ciao_ensure_heap(state, 1);
-  tagged_t resul = TagHVA(GTOP);
+  tagged_t resul = Tagp(HVA,GTOP);
   HeapPush(GTOP, resul);
   return resul;
 }                             
@@ -40,6 +40,6 @@ tagged_t sep_make_functor(goal_descriptor_t *state, tagged_t atom,
       ciao_ensure_heap(state, 2 + arity);
       HeapPush(P_GTOP, atom);
       for (i = 0; i < arity; i++) HeapPush(P_GTOP, args[i]);
-      return Tag(STR, HeapOffset(P_GTOP, -(arity+1)));
+      return Tagp(STR, HeapOffset(P_GTOP, -(arity+1)));
     }
 }
