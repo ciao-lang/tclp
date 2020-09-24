@@ -18,8 +18,8 @@
 #define INTEGER_MARK 0xB0000008
 #define FLOAT_MARK   0x9000000C
 #endif  /* end if 64-bit else 32-bit */
-#define GTOP state->worker_registers->global_top
-#define P_GTOP  w->global_top
+#define GTOP state->worker_registers->heap_top
+#define P_GTOP  w->heap_top
 #define REGISTERS state->worker_registers
 
 /* ------------------------- */
