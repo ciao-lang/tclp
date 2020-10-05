@@ -20,6 +20,9 @@
 #include "difference_constraints.h"
 #include "space.h"
 
+/* (from attibutes.c) */ /* TODO (JFMC): avoid adaptor? */
+CBOOL__PROTO(bu2_update_attribute, tagged_t x, tagged_t constr);
+
 tagged_t args[3];
 tagged_t tmp_term1, tmp_term2, undo_term;
 intmach_t index_macro;
