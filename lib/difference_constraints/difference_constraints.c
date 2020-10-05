@@ -192,13 +192,13 @@ CBOOL__PROTO(difference_constraints_print_variable_c)
 //  printf("\nEntering get_space\n"); fflush(stdout);
 //#endif
 //  struct space* prev_space = space;
-//  if (last_cp != w->node)
+//  if (last_cp != w->choice)
 //    space = clone_space(space);
 //
 //  Unify(X(0),MkInt((int)prev_space));
 //  Unify(X(1),MkInt((int)last_cp));
 //
-//  last_cp = w->node;
+//  last_cp = w->choice;
 //
 //  return TRUE;
 //}
@@ -211,7 +211,7 @@ CBOOL__PROTO(difference_constraints_print_variable_c)
 //  DEREF(X(0),X(0));
 //  DEREF(X(1),X(1));
 //  struct space *prev_space = (struct space*)TaggedToIntmach(X(0));
-//  last_cp = (node_t*)TaggedToIntmach(X(1));
+//  last_cp = (choice_t*)TaggedToIntmach(X(1));
 //
 ////  if (prev_space != space) delete_space(space);
 //
