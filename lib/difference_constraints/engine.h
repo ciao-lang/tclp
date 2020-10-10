@@ -38,12 +38,12 @@
 /* ------------------------ */
 #define IntOfTerm(TERM) (TaggedToIntmach(TERM)) 
 #define FloatOfTerm(TERM) (TaggedToFloat(TERM)) 
-#define AtomName(ATOM) (((atom_t *)TagToAtom(ATOM))->name)
-#define HeadOfTerm(TERM) (*TagToPointer(TERM))
-#define TailOfTerm(TERM) (*(TagToPointer(TERM) + 1))
+#define AtomName(ATOM) (((atom_t *)TaggedToAtom(ATOM))->name)
+#define HeadOfTerm(TERM) (*TaggedToPointer(TERM))
+#define TailOfTerm(TERM) (*(TaggedToPointer(TERM) + 1))
 #define ArgOfTerm(A,TERM) (*TaggedToArg(TERM,A))
-#define NameOfFunctor(FUNCTOR) (((atom_t *)TagToAtom(SetArity(TagToHeadfunctor(FUNCTOR),0)))->name)
-#define ArityOfFunctor(FUNCTOR)(Arity(TagToHeadfunctor(FUNCTOR)))
+#define NameOfFunctor(FUNCTOR) (((atom_t *)TaggedToAtom(SetArity(TaggedToHeadfunctor(FUNCTOR),0)))->name)
+#define ArityOfFunctor(FUNCTOR)(Arity(TaggedToHeadfunctor(FUNCTOR)))
 
 
 /* -------------------- */
@@ -56,7 +56,7 @@
 #define IsApplTerm(TERM) (TaggedIsSTR(TERM) && !IsNumber(TERM))
 #define IsVarTerm(TERM) (IsVar(TERM))
 #define IsNonVarTerm(TERM) (!IsVar(TERM))
-#define IsFreeVar(X) (IsVar(X) && ((X) == *TagToPointer(X)))
+#define IsFreeVar(X) (IsVar(X) && ((X) == *TaggedToPointer(X)))
 
 /* -------------------- */
 /*      Unification     */
