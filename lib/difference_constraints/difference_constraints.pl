@@ -8,6 +8,8 @@
 :- use_module(library(difference_constraints/difference_constraints_rt)).
 :- include(library(difference_constraints/difference_constraints_attributes)).
 
+:- if(defined('SHELL')).
+:- else.
 :- reexport(library(difference_constraints/difference_constraints_rt_ll),
     [
  %%         '$forward_trail'/2,
@@ -39,3 +41,4 @@
         '#=<'/2,
         '#<>'/2
     ]).
+:- endif.

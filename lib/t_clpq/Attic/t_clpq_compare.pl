@@ -1,4 +1,7 @@
 :- package(t_clpq_compare).
+
+:- if(defined('SHELL')).
+:- else.
 :- export([
             call_domain_projection/2,
             answer_domain_projection/2,
@@ -8,9 +11,11 @@
             answer_check_entail/6,
             apply_answer/3
         ]).
+:- endif.
 
 :- use_module(library(clpq/clpq_dump), [clpqr_dump_constraints/3]).
 
+:- use_package(tabling).
 :- use_package(clpq).
 :- active_tclp.
 

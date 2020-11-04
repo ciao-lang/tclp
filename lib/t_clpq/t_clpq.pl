@@ -1,4 +1,7 @@
 :- package(t_clpq).
+
+:- if(defined('SHELL')).
+:- else.
 :- export([
             call_domain_projection/2,
             answer_domain_projection/2,
@@ -8,9 +11,11 @@
             answer_check_entail/3,
             apply_answer/2
         ]).
+:- endif.
 
 :- use_module(library(clpq/clpq_dump), [clpqr_dump_constraints/3]).
 
+:- use_package(tabling).
 :- use_package(clpq).
 
 :- active_tclp.
@@ -46,7 +51,7 @@ call_entail(Vars, (V2-S2)) :-
               Vars = V2,
               clpq_entailed(S2)
           ).
-call_store_projection(_, Vars, (F-S)) :-
+call_store_projection(Vars, _, (F-S)) :-
     clpqr_dump_constraints(Vars, F ,S).
 
 answer_domain_projection(X, (X-S1)) :-

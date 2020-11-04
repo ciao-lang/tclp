@@ -1,4 +1,7 @@
 :- package(t_clpr).
+
+:- if(defined('SHELL')).
+:- else.
 :- export([
             call_domain_projection/2,
             answer_domain_projection/2,
@@ -8,11 +11,12 @@
             answer_check_entail/3,
             apply_answer/2
         ]).
+:- endif.
 
 :- use_module(library(clpr/clpr_dump), [clpqr_dump_constraints/3]).
 
+:- use_package(tabling).
 :- use_package(clpr).
-
 :- active_tclp.
 
 % ORIGINAL VERSION - PPDP

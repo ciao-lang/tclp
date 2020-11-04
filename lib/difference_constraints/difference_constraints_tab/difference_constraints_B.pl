@@ -1,4 +1,7 @@
 :- package(difference_constraints_B).
+
+:- if(defined('SHELL')).
+:- else.
 :- export([
             call_domain_projection/2,
             answer_domain_projection/2,
@@ -10,8 +13,9 @@
             current_store/1,
             reinstall_store/3
         ]).
+:- endif.
 
-
+:- use_package(tabling).
 :- use_package(library(difference_constraints)).
 :- active_tclp.
 
