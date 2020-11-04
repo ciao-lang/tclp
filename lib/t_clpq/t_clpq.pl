@@ -43,7 +43,8 @@
 
 
 %% NEW VERSION - TPLP
-
+:- if(defined('SHELL')).
+:- else.
 %% option A: two-steps
 call_domain_projection(Vars, Vars).
 call_entail(Vars, (V2-S2)) :-
@@ -71,3 +72,4 @@ answer_store_projection(_, St, St).
 
 apply_answer(X, (X-S1)) :- 
     clpq_meta(S1).
+:- endif.
