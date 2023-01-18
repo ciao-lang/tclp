@@ -18,7 +18,7 @@
 #if defined(TABLING)
 
 
-#define DiffIntOfTerm(X) TermToPointer(((tagged_t)X))
+#define DiffIntOfTerm(X) TermToPointer(intmach_t, ((tagged_t)X))
 #define DiffMkIntTerm(X) PointerToTerm(((tagged_t)X))
 
 
